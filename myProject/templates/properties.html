@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<img 
+<html>
+    <head>
+        <title> Properties </title>
+
+    </head>
+    <style>
+        .property {
+            background-color: rgb(255, 90, 95);
+            color: white;
+            margin: 20px;
+            padding: 20px;
+        }
+        body{
+            background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a82cd856393493.59ad3f4104d1d.png");
+        }
+    </style>
+    <body>
+
+        <form action="http://localhost:4000/home">
+            <input type="submit" value="home">
+        </form>
+
+        <div class="properties">
+            {% for property in properties %}
+            <div class="property" style="text-align: center; font-family: verdana">
+                <h1>{{ property.name }}</h1>
+                <h3>Property type: {{ property.propertyType }}</h3>
+                <h3>Rental price: {{ property.price }}</h3>
+                <form action="http://localhost:4000/removeProperty" method = "POST">
+                    <button name="property_id" value={{property._id}}>Rent</button>
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+    </body>
+</html>
