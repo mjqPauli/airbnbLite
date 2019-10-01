@@ -28,7 +28,7 @@
                 <h1>{{ property.name }}</h1>
                 <h3>Property type: {{ property.propertyType }}</h3>
                 <h3>Rental price: {{ property.price }}</h3>
-                <form action="http://localhost:4000/removeProperty" method = "POST">
+                <form action="http://localhost:4000/rentProperty" method = "POST">
                     <button name="property_id" value={{property._id}}>Rent</button>
                 </form>
             </div>

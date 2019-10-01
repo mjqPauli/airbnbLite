@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <style>
+    .property_rent {
+        background-color: rgb(255, 90, 95);
+        color: white;
+        margin: 20px;
+        padding: 20px;
+    }
+    .property_host{
+        background-color: skyblue;
+        color: white;
+        margin: 20px;
+        padding: 20px;
+    }
+    </style>
+    <body>
+        <h1 style="text-align: center">
+            Welcome, {{name}}!
+        </h1>
+        <form action= "http://localhost:4000/home" style="font-family: verdana; font-weight: bold">
+            <input type="submit" value="home">
+        </form>
+        <form action= "http://localhost:4000/logout" style="font-family: verdana; font-weight: bold;text-align: right">
+            <input type="submit" value="Log out">
+        </form>
+        <br>
+        <div class="properties">
+            <h3>
+                Properties rented:
+            </h3>
+            <br>
+                {% for property in properties_rent %}
+                <div class="property_rent" style="text-align: center; font-family: verdana">
+                    <h1>{{ property.name }}</h1>
+                    <h3>Property type: {{ property.propertyType }}</h3>
+                    <h3>Rental price: {{ property.price }}</h3>
+                    <form action="http://localhost:4000/checkout" method = "POST">
+                        <button name="property_id" value={{property._id}}>Check Out</button>
+                    </form>
+                </div>
+            {% endfor %}
+            </div>
+            
+            <div class="properties">
+                <h3>
+                    Properties hosting:
+                </h3>
+                <br>
+                    {% for property in properties_host %}
+                    <div class="property_host" style="text-align: center; font-family: verdana">
+                        <h1>{{ property.name }}</h1>
+                        <h3>Property type: {{ property.propertyType }}</h3>
+                        <h3>Rental price: {{ property.price }}</h3>
+                        <form action="http://localhost:4000/removeProperty" method = "POST">
+                            <button name="property_id" value={{property._id}}>Remove</button>
+                        </form>
+                    </div>
+                    {% endfor %}
+                </div>
+    </body>
+    
+</html>
